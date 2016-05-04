@@ -20,6 +20,7 @@ private def readEnvVarsFromRemote() {
 
 @NonCPS
 private def setEnvVars(Map envVars) {
+    println envVars;
     envVars.each {
         echo it.key
         echo it.value
