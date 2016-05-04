@@ -21,11 +21,14 @@ private def readEnvVarsFromRemote() {
 @NonCPS
 private def setEnvVars(Map envVars) {
     println envVars;
-    envVars.each {
+    envVars.each{ k, v -> 
+    env[k] = v 
+    }
+/**    envVars.each {
         echo it.key
         echo it.value
         env[it.key] = it.value
-    }
+    } **/
 }
 
 
