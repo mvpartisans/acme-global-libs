@@ -1,3 +1,4 @@
+def invoke(){
 node{   
    
    stage 'Copy Scripts'
@@ -47,6 +48,8 @@ node{
     sh '''
     # ${PS_EXE} ${BF_ROOT}\${PS_DEPLOY_SCRIPT}    
     '''
-        
-    
 }
+}
+
+return this;
+
