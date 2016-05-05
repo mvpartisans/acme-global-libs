@@ -24,7 +24,7 @@ def invoke(def selector, boolean broadcast) {
                     println nodeLabel
                     //println envVars["repo"]
 
-                    node(nodeLabel) {
+                    node('master') {
                         sh "echo executing on node: ${nodeLabel}"
                     }
                 }
