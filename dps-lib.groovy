@@ -15,6 +15,8 @@ def invoke(def selector, boolean broadcast) {
 
         runStep nodeLabels, envVars, broadcast, {
             println "hello"
+        
+        println "broadcast: ${broadcast}"
 
             if (broadcast) {
                 nodeLabels.each { nodeLabel ->
