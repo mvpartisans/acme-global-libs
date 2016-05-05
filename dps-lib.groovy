@@ -22,7 +22,7 @@ def invoke(def selector, boolean broadcast) {
                 println nodeLabels.size()
                 nodeLabels.each { nodeLabel ->
 
-                    println nodeLabel
+                    println "name of node: ${nodeLabel}"
                     //println envVars["repo"]
 
                     node(nodeLabel) {
