@@ -1,4 +1,7 @@
-def invoke(){
+def invoke(def selector){
+
+echo " Selector : ${selector} "   
+   
 node{   
    
    stage 'Copy Scripts'
