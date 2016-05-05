@@ -19,14 +19,18 @@ def invoke(def selector, boolean broadcast) {
             println "hello"
 
             if (broadcast) {
-                    nodeLabels.each { nodeLabel ->
+                nodeLabels.each { nodeLabel ->
 
-                        println nodeLabel
-                        //println envVars["repo"]
+                    println nodeLabel
+                    //println envVars["repo"]
+
+                    node(nodeLabel) {
+                        sh "echo executing on node: ${nodeLabel}"
                     }
-            } else {
-                    println nodeLabels[0]
                 }
+            } else {
+                println nodeLabels[0]
+            }
         }
 
 
@@ -72,7 +76,8 @@ def invoke(def selector, boolean broadcast) {
 
 def getNodesFromSelectors(def selector) {
 
-    List nodeLabels = ["label1", "label2", "label3"]
+    //List nodeLabels = ["label1", "label2", "label3"]
+    List nodeLabels = ["master", "master", "master"]
 
     return nodeLabels
 }
