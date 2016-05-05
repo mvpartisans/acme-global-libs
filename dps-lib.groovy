@@ -19,18 +19,14 @@ def invoke(def selector, boolean broadcast) {
             println "hello"
 
             if (broadcast) {
-
-                if (parallel) {
                     nodeLabels.each { nodeLabel ->
 
                         println nodeLabel
                         //println envVars["repo"]
                     }
-                } else {
+            } else {
                     println nodeLabels[0]
                 }
-            }
-
         }
 
 
