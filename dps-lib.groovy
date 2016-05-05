@@ -19,6 +19,7 @@ def invoke(def selector, boolean broadcast) {
         println "broadcast: ${broadcast}"
 
             if (broadcast) {
+                println nodeLabels.size()
                 nodeLabels.each { nodeLabel ->
 
                     println nodeLabel
