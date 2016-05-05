@@ -21,7 +21,7 @@ def invoke(def selector, boolean broadcast) {
             if (broadcast) {
                 println nodeLabels.size()
                 
-                for (int i=0; i< nodeLabels.size(), i++){
+                for (int i=0; i< nodeLabels.size(); i++){
                 
                     println "name of node: ${nodeLabels[i]}"
                     //println envVars["repo"]
