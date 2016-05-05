@@ -15,7 +15,7 @@ def invoke(def selector, boolean broadcast) {
         stage 'Copy Scripts'
         checkpoint 'Copy Scripts'
 
-        runStep nodeLabels, envVars, broadcast, parallel, {
+        runStep nodeLabels, envVars, broadcast, {
             println "hello"
 
             if (broadcast) {
@@ -82,7 +82,7 @@ def getNodesFromSelectors(def selector) {
 }
 
 
-def runStep(nodeLabels, envVars, broadcast, parallel, cl) {
+def runStep(nodeLabels, envVars, broadcast, cl) {
 
     println nodeLabels;
     println envVars;
