@@ -20,15 +20,17 @@ def invoke(def selector, boolean broadcast) {
 
             if (broadcast) {
                 println nodeLabels.size()
-                nodeLabels.each { nodeLabel ->
-
-                    println "name of node: ${nodeLabel}"
+                
+                for (i in nodeLabels){
+                
+                    println "name of node: ${nodeLabels[i]}"
                     //println envVars["repo"]
 
-                    node(nodeLabel) {
-                        sh "echo executing on node: ${nodeLabel}"
-                    }
+                    node(nodeLabels[i]) {
+                        sh "echo executing on node: ${nodeLabels[i]}"
+                    }                
                 }
+                
             } else {
                 println nodeLabels[0]
             }
