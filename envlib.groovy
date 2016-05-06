@@ -19,7 +19,7 @@ private def readEnvVarsFromRemote() {
 }
 
 @NonCPS
-private def readEnvVarsFromFile(def projectName) {
+ def readEnvVarsFromFile(def projectName) {
     def fileName = projectName + "_env.json"
     println "fileName :" +fileName
     String envJson = readFile "env.json" 
