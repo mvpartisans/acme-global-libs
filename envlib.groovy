@@ -57,7 +57,7 @@ def setEnvVars(Map envVars) {
 }
 
 
-def sayHello(Map envVars){
+def sayHello(def envVars){
     println "hello"
     println envVars
 }
