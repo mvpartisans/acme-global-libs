@@ -39,6 +39,7 @@ private def readEnvVarsFromFile(def projectName) {
     def envJson = readFile fileName 
     def jsonResp = new JsonSlurper().parseText(envJson)
 
+    println jsonResp
     return (Map) jsonResp;
 }
 
