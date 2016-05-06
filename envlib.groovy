@@ -23,6 +23,7 @@ private def readEnvVarsFromFile(def projectName) {
     def fileName = projectName + "_env.json"
     println "fileName :" +fileName
     def envJson = readFile fileName 
+    println "Json text : " + envJson
     def jsonResp = new JsonSlurper().parseText(envJson)
     
     println "printing json" + jsonResp
