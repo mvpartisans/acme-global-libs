@@ -76,6 +76,7 @@ def initEnvironment() {
 def initEnvironmentForProject(def projectName) {
 
     Map envVars = readEnvVarsFromFile(projectName);
+    println envVars
     setEnvVars(envVars);
 }
 
