@@ -82,7 +82,7 @@ def initEnvironment() {
 @NonCPS
 def initEnvironmentForProject(def projectName) {
 
-    Map envVars = readEnvVarsFromFile(projectName);
+    def envVars = readEnvVarsFromFile(projectName);
     println envVars
     setEnvVars(envVars);
 }
