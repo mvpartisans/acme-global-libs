@@ -44,7 +44,7 @@ private def readEnvVarsFromFile(def projectName) {
 }
 
 @NonCPS
-private def setEnvVars(Map envVars) {
+def setEnvVars(Map envVars) {
     println envVars;
     envVars.each{ k, v -> 
     println "Key: ${k} : Value:${v}"
