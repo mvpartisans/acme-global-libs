@@ -43,7 +43,7 @@ def readEnvVarsFromFile(def projectName) {
     return (Map) jsonResp;
 }
 
-def setEnvVars(Map envVars) {
+def setEnvVars(def envVars) {
     println envVars;
     envVars.each{ k, v -> 
     println "Key: ${k} : Value:${v}"
