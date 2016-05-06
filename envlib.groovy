@@ -18,6 +18,7 @@ private def readEnvVarsFromRemote() {
     return (Map) jsonResp;
 }
 
+/**
 @NonCPS
  def readEnvVarsFromFile(def projectName) {
     def fileName = projectName + "_env.json"
@@ -27,6 +28,16 @@ private def readEnvVarsFromRemote() {
     def jsonResp = new JsonSlurper().parseText(envJson)
     
     println "printing json" + jsonResp
+
+    return (Map) jsonResp;
+}
+**/
+
+@NonCPS
+private def readEnvVarsFromFile(def fileName) {
+
+    def envJson = readFile fileName 
+    def jsonResp = new JsonSlurper().parseText(envJson)
 
     return (Map) jsonResp;
 }
