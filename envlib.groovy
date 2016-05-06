@@ -22,7 +22,7 @@ private def readEnvVarsFromRemote() {
 private def readEnvVarsFromFile(def projectName) {
     def fileName = projectName + "_env.json"
     println "fileName :" +fileName
-    def envJson = readFile "env.json" 
+    //def envJson = readFile "env.json" 
     println "Json text : "
     def jsonResp = new JsonSlurper().parseText(envJson)
     
