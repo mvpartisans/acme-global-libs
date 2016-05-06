@@ -43,7 +43,6 @@ def readEnvVarsFromFile(def projectName) {
     return (Map) jsonResp;
 }
 
-@NonCPS
 def setEnvVars(Map envVars) {
     println envVars;
     envVars.each{ k, v -> 
@@ -56,6 +55,8 @@ def setEnvVars(Map envVars) {
         env[it.key] = it.value
     } **/
 }
+
+
 
 
 @NonCPS
