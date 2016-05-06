@@ -57,6 +57,10 @@ def setEnvVars(Map envVars) {
 }
 
 
+def sayHello(){
+    println "hello"
+}
+
 
 
 @NonCPS
