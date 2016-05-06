@@ -56,4 +56,5 @@ def initEnvironment() {
     setEnvVars(envVars);
 }
 
+
 return this;
