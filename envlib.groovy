@@ -19,6 +19,15 @@ private def readEnvVarsFromRemote() {
 }
 
 @NonCPS
+private def readEnvVarsFromFile(def fileName) {
+
+    def envJson = readFile fileName 
+    def jsonResp = new JsonSlurper().parseText(envJson)
+
+    return (Map) jsonResp;
+}
+
+@NonCPS
 private def setEnvVars(Map envVars) {
     println envVars;
     envVars.each{ k, v -> 
