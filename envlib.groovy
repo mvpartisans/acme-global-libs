@@ -31,6 +31,7 @@ private def readEnvVarsFromFile(def projectName) {
 private def setEnvVars(Map envVars) {
     println envVars;
     envVars.each{ k, v -> 
+    println "Key: ${k} : Value:${v}"
     env[k] = v 
     }
 /**    envVars.each {
