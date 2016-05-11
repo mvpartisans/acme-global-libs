@@ -64,7 +64,9 @@ def buildSteps(cl) {
             //println("---------" + pair.getKey() + " = " + pair.getValue());
 
             stage "${pair.getKey()}"
-            pair.getValue()();
+            //pair.getValue().call();
+            def cls = pair.getValue();
+            cls.call();
         }
     }
 }
