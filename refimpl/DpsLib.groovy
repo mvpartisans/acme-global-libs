@@ -44,7 +44,7 @@ def init(def selector, boolean broadcast) {
 def buildSteps(cl) {
     println "1*******************************************************************************************************************"
     println cl
-    def arr = cl.call();
+    def stepsMap = cl.call();
     println "number of steps : ${arr.size()}"
     node() {
 /*        for (int i = 0; i < arr.size(); i++) {
@@ -52,7 +52,7 @@ def buildSteps(cl) {
             arr[i].value.call();
         }*/
 
-        for (Map.Entry<String, String> entry : map.entrySet())
+        for (Map.Entry<String, String> entry : stepsMap.entrySet())
         {
             println(entry.getKey());
             entry.getValue().call();
