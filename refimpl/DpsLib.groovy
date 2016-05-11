@@ -40,16 +40,22 @@ def init(def selector, boolean broadcast) {
 
 }
 
-@NonCPS
+//@NonCPS
 def buildSteps(cl) {
     println "1*******************************************************************************************************************"
     println cl
     def arr = cl.call();
     println "number of steps : ${arr.size()}"
     node() {
-        arr.each {
-            println it.key
-            it.value.call();
+/*        for (int i = 0; i < arr.size(); i++) {
+            println arr[i].key
+            arr[i].value.call();
+        }*/
+
+        for (Map.Entry<String, String> entry : map.entrySet())
+        {
+            println(entry.getKey());
+            entry.getValue().call();
         }
     }
 }
