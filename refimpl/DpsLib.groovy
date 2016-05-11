@@ -58,7 +58,7 @@ def buildSteps(cl) {
             entry.getValue().call();
         }*/
 
-        Iterator itr = stepsMap.entrySet().iterator();
+/*        Iterator itr = stepsMap.entrySet().iterator();
         while (itr.hasNext()) {
             Map.Entry pair = (Map.Entry)itr.next();
             //println("---------" + pair.getKey() + " = " + pair.getValue());
@@ -67,10 +67,25 @@ def buildSteps(cl) {
             //pair.getValue().call();
             def cls = pair.getValue();
             cls.call();
+        }*/
+
+        def entries = get_map_entries(stepsMap)
+        for (int i=0; i<entries.size(); i++){
+            String key = entries[i][0]
+            String value =  entries[i][1]
+
+            stage "${key}"
+            //sh "echo Key $key and value $value"
+            value.call();
         }
     }
 }
 
+
+@NonCPS
+List<List<Object>> get_map_entries(map) {
+    map.collect {k, v -> [k, v]}
+}
 
 def getNodesFromSelectors(def selector) {
 
