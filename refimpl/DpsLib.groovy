@@ -7,15 +7,23 @@ import groovy.json.JsonSlurper
 def broadcast = false;
 def selector = null;
 
+/**
+ * Initializer
+ * @param _selector
+ * @param _broadcast
+ */
 def init(def _selector, boolean _broadcast) {
 
     broadcast = _broadcast;
     selector = _selector;
     initEnvironment();
-
 }
 
-
+/**
+ * Method takes a closure with a Map, the Map key is used as the Stage Name and the Map value is executable Groovy and/or shell code
+ * @param cl
+ * @return
+ */
 def buildSteps(cl) {
     //println cl
     def stepsMap = cl.call();
@@ -33,15 +41,18 @@ def buildSteps(cl) {
     }
 }
 
+/**
+ * Method executes BuIld step on all Nodes if Broadcast is set to true
+ * @param step
+ * @return
+ */
 def excuteStepOnNodes(step) {
-    echo " Selector : ${selector} "
+    println " Selector : ${selector} "
     List nodeLabels = getNodesFromSelectors(selector);
-    Map envVars = [repo: '/dps-service', branch: 'master']
 
     if (broadcast) {
         for (int i = 0; i < nodeLabels.size(); i++) {
             //println "Name of node: ${nodeLabels[i]}"
-
             node("${nodeLabels[i]}") {
                 step.call();
             }
@@ -54,12 +65,22 @@ def excuteStepOnNodes(step) {
     }
 }
 
-
+/**
+ * Create a List from a Map, as iterating a Map exposes non-seralizable classes non permitted in Pipeline
+ * @param map
+ * @return List
+ */
 @NonCPS
 List<List<Object>> get_map_entries(map) {
     map.collect { k, v -> [k, v] }
 }
 
+/**
+ * Method returns All Nodes that map to a Selector
+ * @todo implement Selector to Collector Mapping
+ * @param selector
+ * @return
+ */
 def getNodesFromSelectors(def selector) {
 
     List nodeLabels = ["dump-slave-1", "dump-slave-1", "dump-slave-1"]
@@ -67,6 +88,10 @@ def getNodesFromSelectors(def selector) {
     return nodeLabels
 }
 
+/**
+ * Init envvars from JSON over REST
+ * @return
+ */
 @NonCPS
 def initEnvironment() {
 
@@ -74,7 +99,10 @@ def initEnvironment() {
     setEnvVars(envVars);
 }
 
-
+/**
+ * Read JSON from URL
+ * @return MAP of Key/Val
+ */
 @NonCPS
 private def readEnvVarsFromRemote() {
 
@@ -84,6 +112,11 @@ private def readEnvVarsFromRemote() {
     return (Map) jsonResp;
 }
 
+/**
+ * Iterate over Map and create Jenkins ENV Variables
+ * @param envVars
+ * @return
+ */
 @NonCPS
 private def setEnvVars(Map envVars) {
     //println envVars;
