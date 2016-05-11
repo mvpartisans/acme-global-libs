@@ -71,7 +71,7 @@ List<List<Object>> get_map_entries(map) {
 def getNodesFromSelectors(def selector) {
 
     //List nodeLabels = ["label1", "label2", "label3"]
-    List nodeLabels = ["master", "master", "master"]
+    List nodeLabels = ["dump-slave-1", "dump-slave-1", "dump-slave-1"]
     //List nodeLabels = ["dps_cats_int_web", "dps_cats_int_web-sideA"]
 
 
