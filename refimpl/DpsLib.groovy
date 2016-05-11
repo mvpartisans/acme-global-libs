@@ -44,11 +44,14 @@ def init(def selector, boolean broadcast) {
 def buildSteps(cl) {
     println "*******************************************************************************************************************"
     def arr = cl.call();
-    arr.each {
-        println it.key
-        it.value.call();
+    node() {
+        arr.each {
+            println it.key
+            it.value.call();
+        }
     }
 }
+
 
 def getNodesFromSelectors(def selector) {
 
