@@ -62,6 +62,9 @@ def buildSteps(cl) {
         while (itr.hasNext()) {
             Map.Entry pair = (Map.Entry)itr.next();
             println("---------" + pair.getKey() + " = " + pair.getValue());
+
+            stage pair.getKey();
+            pair.getValue().call();
         }
     }
 }
