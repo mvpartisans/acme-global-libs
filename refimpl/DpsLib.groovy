@@ -43,6 +43,7 @@ def init(def selector, boolean broadcast) {
 @NonCPS
 def buildSteps(cl) {
     println "1*******************************************************************************************************************"
+    println cl
     def arr = cl.call();
     println "number of steps : ${arr.size()}"
 /*    node() {
