@@ -46,7 +46,7 @@ def excuteStepOnNodes(step) {
             println "name of node: ${nodeLabels[i]}"
             //println envVars["repo"]
 
-            node(nodeLabels[i]) {
+            node("${nodeLabels[i]}") {
 /*                    bat "echo executing on node: ${nodeLabels[i]}"
                     bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "*/
                 step.call();
@@ -54,7 +54,7 @@ def excuteStepOnNodes(step) {
         }
 
     } else {
-        node(nodeLabels[0]) {
+        node("${nodeLabels[0]}") {
             //   bat "echo executing on node: ${nodeLabels[0]}"
             //   bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "
             step.call();
