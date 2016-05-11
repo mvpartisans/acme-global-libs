@@ -17,7 +17,7 @@ def init(def _selector, boolean _broadcast) {
 
 
 def buildSteps(cl) {
-    println cl
+    //println cl
     def stepsMap = cl.call();
     println "number of steps : ${stepsMap.size()}"
     node() {
@@ -40,7 +40,7 @@ def excuteStepOnNodes(step) {
 
     if (broadcast) {
         for (int i = 0; i < nodeLabels.size(); i++) {
-            println "Name of node: ${nodeLabels[i]}"
+            //println "Name of node: ${nodeLabels[i]}"
 
             node("${nodeLabels[i]}") {
                 step.call();
@@ -86,13 +86,13 @@ private def readEnvVarsFromRemote() {
 
 @NonCPS
 private def setEnvVars(Map envVars) {
-    println envVars;
+    //println envVars;
     envVars.each { k, v ->
         env[k] = v
     }
     envVars.each {
-        echo it.key
-        echo it.value
+        //echo it.key
+        //echo it.value
         env[it.key] = it.value
     }
 }
