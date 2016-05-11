@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 /**
  * Created by iansari on 5/10/16.
  */
@@ -9,6 +11,7 @@ def init(def _selector, boolean _broadcast) {
 
     broadcast = _broadcast;
     selector = _selector;
+    initEnvironment();
 
 }
 
@@ -62,6 +65,36 @@ def getNodesFromSelectors(def selector) {
     List nodeLabels = ["dump-slave-1", "dump-slave-1", "dump-slave-1"]
 
     return nodeLabels
+}
+
+@NonCPS
+def initEnvironment() {
+
+    Map envVars = readEnvVarsFromRemote();
+    setEnvVars(envVars);
+}
+
+
+@NonCPS
+private def readEnvVarsFromRemote() {
+
+    def payload = new URL("http://mvpartisans.com/prod_env.json").text
+    def jsonResp = new JsonSlurper().parseText(payload)
+
+    return (Map) jsonResp;
+}
+
+@NonCPS
+private def setEnvVars(Map envVars) {
+    println envVars;
+    envVars.each { k, v ->
+        env[k] = v
+    }
+    envVars.each {
+        echo it.key
+        echo it.value
+        env[it.key] = it.value
+    }
 }
 
 
