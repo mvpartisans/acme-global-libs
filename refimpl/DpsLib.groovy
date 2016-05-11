@@ -58,7 +58,7 @@ def buildSteps(cl) {
             entry.getValue().call();
         }*/
 
-        Iterator itr = map.entrySet().iterator();
+        Iterator itr = stepsMap.entrySet().iterator();
         while (itr.hasNext()) {
             Map.Entry pair = (Map.Entry)itr.next();
             System.out.println(pair.getKey() + " = " + pair.getValue());
