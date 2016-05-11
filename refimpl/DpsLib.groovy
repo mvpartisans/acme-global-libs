@@ -52,10 +52,16 @@ def buildSteps(cl) {
             arr[i].value.call();
         }*/
 
-        for (Map.Entry<String, String> entry : stepsMap.entrySet())
+/*        for (Map.Entry<String, String> entry : stepsMap.entrySet())
         {
             println(entry.getKey());
             entry.getValue().call();
+        }*/
+
+        Iterator itr = map.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry pair = (Map.Entry)itr.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
         }
     }
 }
