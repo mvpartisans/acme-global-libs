@@ -46,12 +46,11 @@ def buildSteps(cl) {
     println cl
     def arr = cl.call();
     println "number of steps : ${arr.size()}"
-/*    node() {
-        arr.each {
-            println it.key
-            it.value.call();
-        }
-    }*/
+    node() {
+        for (int i = 0; i < arr.size(); i++) {
+            println arr[i].key
+            arr[i].value.call();
+    }
 }
 
 
