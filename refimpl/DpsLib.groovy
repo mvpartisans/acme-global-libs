@@ -2,19 +2,41 @@
  * Created by iansari on 5/10/16.
  */
 
+def broadcast = false;
+def selector = null;
 
-def init(def selector, boolean broadcast) {
+def init(def _selector, boolean _broadcast) {
 
+    broadcast = _broadcast;
+    selector = _selector;
+
+}
+
+//@NonCPS
+def buildSteps(cl) {
+    println "1*******************************************************************************************************************"
+    println cl
+    def stepsMap = cl.call();
+    println "number of steps : ${stepsMap.size()}"
+    node() {
+
+        def entries = get_map_entries(stepsMap)
+        for (int i = 0; i < entries.size(); i++) {
+            String key = entries[i][0]
+            String value = entries[i][1]
+
+            stage "${key}"
+            //sh "echo Key $key and value $value"
+            //value.call();
+            excuteStepOnNodes(value)
+        }
+    }
+}
+
+def executeStepOnNodes(step) {
     echo " Selector : ${selector} "
-
     List nodeLabels = getNodesFromSelectors(selector);
     Map envVars = [repo: '/dps-service', branch: 'master']
-
-    stage 'Copy Scripts'
-    //checkpoint 'Copy Scripts'
-
-    //runStep nodeLabels, envVars, broadcast, {
-    println "broadcast: ${broadcast}"
 
     if (broadcast) {
         println nodeLabels.size()
@@ -27,56 +49,15 @@ def init(def selector, boolean broadcast) {
             node(nodeLabels[i]) {
 /*                    bat "echo executing on node: ${nodeLabels[i]}"
                     bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "*/
+                step.call();
             }
         }
 
     } else {
-        ///node(nodeLabels[0]) {
-        //   bat "echo executing on node: ${nodeLabels[0]}"
-        //   bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "
-        //}
-    }
-    //}
-
-}
-
-//@NonCPS
-def buildSteps(cl) {
-    println "1*******************************************************************************************************************"
-    println cl
-    def stepsMap = cl.call();
-    println "number of steps : ${stepsMap.size()}"
-    node() {
-/*        for (int i = 0; i < arr.size(); i++) {
-            println arr[i].key
-            arr[i].value.call();
-        }*/
-
-/*        for (Map.Entry<String, String> entry : stepsMap.entrySet())
-        {
-            println(entry.getKey());
-            entry.getValue().call();
-        }*/
-
-/*        Iterator itr = stepsMap.entrySet().iterator();
-        while (itr.hasNext()) {
-            Map.Entry pair = (Map.Entry)itr.next();
-            //println("---------" + pair.getKey() + " = " + pair.getValue());
-
-            stage "${pair.getKey()}"
-            //pair.getValue().call();
-            def cls = pair.getValue();
-            cls.call();
-        }*/
-
-        def entries = get_map_entries(stepsMap)
-        for (int i=0; i<entries.size(); i++){
-            String key = entries[i][0]
-            String value =  entries[i][1]
-
-            stage "${key}"
-            //sh "echo Key $key and value $value"
-            value.call();
+        node(nodeLabels[0]) {
+            //   bat "echo executing on node: ${nodeLabels[0]}"
+            //   bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "
+            step.call();
         }
     }
 }
@@ -84,7 +65,7 @@ def buildSteps(cl) {
 
 @NonCPS
 List<List<Object>> get_map_entries(map) {
-    map.collect {k, v -> [k, v]}
+    map.collect { k, v -> [k, v] }
 }
 
 def getNodesFromSelectors(def selector) {
