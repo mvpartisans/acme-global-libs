@@ -12,9 +12,8 @@ def init(def _selector, boolean _broadcast) {
 
 }
 
-//@NonCPS
+
 def buildSteps(cl) {
-    println "1*******************************************************************************************************************"
     println cl
     def stepsMap = cl.call();
     println "number of steps : ${stepsMap.size()}"
@@ -22,13 +21,11 @@ def buildSteps(cl) {
 
         def entries = get_map_entries(stepsMap)
         for (int i = 0; i < entries.size(); i++) {
-            String key = entries[i][0]
-            String value = entries[i][1]
+            String stageName = entries[i][0]
+            String step = entries[i][1]
 
-            stage "${key}"
-            //sh "echo Key $key and value $value"
-            //value.call();
-            excuteStepOnNodes(value)
+            stage "${stageName}"
+            excuteStepOnNodes(step)
         }
     }
 }
@@ -39,24 +36,16 @@ def excuteStepOnNodes(step) {
     Map envVars = [repo: '/dps-service', branch: 'master']
 
     if (broadcast) {
-        println nodeLabels.size()
-
         for (int i = 0; i < nodeLabels.size(); i++) {
-
-            println "name of node: ${nodeLabels[i]}"
-            //println envVars["repo"]
+            println "Name of node: ${nodeLabels[i]}"
 
             node("${nodeLabels[i]}") {
-/*                    bat "echo executing on node: ${nodeLabels[i]}"
-                    bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "*/
                 step.call();
             }
         }
 
     } else {
         node("${nodeLabels[0]}") {
-            //   bat "echo executing on node: ${nodeLabels[0]}"
-            //   bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "
             step.call();
         }
     }
@@ -70,20 +59,10 @@ List<List<Object>> get_map_entries(map) {
 
 def getNodesFromSelectors(def selector) {
 
-    //List nodeLabels = ["label1", "label2", "label3"]
     List nodeLabels = ["dump-slave-1", "dump-slave-1", "dump-slave-1"]
-    //List nodeLabels = ["dps_cats_int_web", "dps_cats_int_web-sideA"]
-
 
     return nodeLabels
 }
 
-
-def runStep(nodeLabels, envVars, broadcast, cl) {
-
-    println nodeLabels;
-    println envVars;
-    cl();
-}
 
 return this;
