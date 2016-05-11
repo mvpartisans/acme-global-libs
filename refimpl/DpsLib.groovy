@@ -33,7 +33,7 @@ def buildSteps(cl) {
     }
 }
 
-def executeStepOnNodes(step) {
+def excuteStepOnNodes(step) {
     echo " Selector : ${selector} "
     List nodeLabels = getNodesFromSelectors(selector);
     Map envVars = [repo: '/dps-service', branch: 'master']
