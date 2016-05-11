@@ -174,3 +174,5 @@ def runStep(nodeLabels, envVars, broadcast, cl) {
     println envVars;
     cl();
 }
+
+return this;
