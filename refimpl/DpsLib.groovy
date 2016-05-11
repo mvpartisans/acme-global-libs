@@ -40,7 +40,7 @@ def init(def selector, boolean broadcast) {
 
 }
 
-
+@NonCPS
 def buildSteps(cl) {
     println "*******************************************************************************************************************"
     def arr = cl.call();
