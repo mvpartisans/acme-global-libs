@@ -45,7 +45,7 @@ def buildSteps(cl) {
     println "1*******************************************************************************************************************"
     println cl
     def stepsMap = cl.call();
-    println "number of steps : ${arr.size()}"
+    println "number of steps : ${stepsMap.size()}"
     node() {
 /*        for (int i = 0; i < arr.size(); i++) {
             println arr[i].key
