@@ -44,7 +44,7 @@ def init(def selector, boolean broadcast) {
 def buildSteps(cl) {
     println "*******************************************************************************************************************"
     def arr = cl.call();
-    println arr.size()
+    println "number of steps : ${arr.size()}"
     node() {
         arr.each {
             println it.key
