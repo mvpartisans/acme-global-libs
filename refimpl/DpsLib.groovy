@@ -25,8 +25,8 @@ def invoke(def selector, boolean broadcast) {
                 //println envVars["repo"]
 
                 node(nodeLabels[i]) {
-                    bat "echo executing on node: ${nodeLabels[i]}"
-                    bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "
+/*                    bat "echo executing on node: ${nodeLabels[i]}"
+                    bat "xcopy /s /v /z /y /i \"$MSI_STAGING_DIR\\*.*\" . "*/
                 }
             }
 
@@ -51,14 +51,14 @@ def invoke(def selector, boolean broadcast) {
                 //println envVars["repo"]
 
                 node(nodeLabels[i]) {
-                    bat "echo executing on node: ${nodeLabels[i]}"
+                    //bat "echo executing on node: ${nodeLabels[i]}"
                     //bat "$PERL $bf_scripts\\uninstall_pp_msi.pl "
                 }
             }
 
         } else {
             node(nodeLabels[0]) {
-                bat "echo executing on node: ${nodeLabels[0]}"
+                //bat "echo executing on node: ${nodeLabels[0]}"
                 //bat "$PERL $bf_scripts\\uninstall_pp_msi.pl"
             }
         }
@@ -90,8 +90,8 @@ def invoke(def selector, boolean broadcast) {
                      bat "echo } >> $PS_UNZIP_SCRIPT"
                      bat "$PS_EXE $BF_ROOT\\$PS_UNZIP_SCRIPT"
                      **/
-                    bat "unzip -o -v *.zip"
-                    bat "dir /S /B"
+/*                    bat "unzip -o -v *.zip"
+                    bat "dir /S /B"*/
                 }
             }
 
@@ -115,15 +115,15 @@ def invoke(def selector, boolean broadcast) {
                 //println envVars["repo"]
 
                 node(nodeLabels[i]) {
-                    bat "echo executing on node: ${nodeLabels[i]}"
-                    bat "$PS_EXE $PS_DEPLOY_SCRIPT"
+/*                    bat "echo executing on node: ${nodeLabels[i]}"
+                    bat "$PS_EXE $PS_DEPLOY_SCRIPT"*/
                 }
             }
 
         } else {
             node(nodeLabels[0]) {
-                bat "echo executing on node: ${nodeLabels[0]}"
-                bat "$PS_EXE $PS_DEPLOY_SCRIPT"
+/*                bat "echo executing on node: ${nodeLabels[0]}"
+                bat "$PS_EXE $PS_DEPLOY_SCRIPT"*/
             }
         }
     }
@@ -141,17 +141,17 @@ def invoke(def selector, boolean broadcast) {
                 //println envVars["repo"]
 
                 node(nodeLabels[i]) {
-                    bat "echo executing on node: ${nodeLabels[i]}"
-                    bat "rm -rf $env.WORKSPACE/*"
-                    bat "exit 0"
+/*                    bat "echo executing on node: ${nodeLabels[i]}"
+                    bat "rm -rf $env.WORKSPACE*//*"
+                    bat "exit 0"*/
                 }
             }
 
         } else {
             node(nodeLabels[0]) {
-                bat "echo executing on node: ${nodeLabels[0]}"
-                bat "rm -rf $env.WORKSPACE/*"
-                bat "exit 0"
+/*                bat "echo executing on node: ${nodeLabels[0]}"
+                bat "rm -rf $env.WORKSPACE*//*"
+                bat "exit 0"*/
             }
         }
     }
