@@ -158,6 +158,7 @@ def invoke(def selector, boolean broadcast) {
 }
 
 def getNodesFromSelectors(def selector) {
+
     List nodeLabels = ["master", "master", "master"]
     //List nodeLabels = ["dps_cats_int_web", "dps_cats_int_web-sideA"]
 
