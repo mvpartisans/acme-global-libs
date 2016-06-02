@@ -32,14 +32,14 @@ def invoke(def selector, boolean broadcast) {
                 }
                 
             } else {
-                println nodeLabels[0]
+                    println nodeLabels[0]
             }
         }
 }
 
 def getNodesFromSelectors(def selector) {
 
-    //List nodeLabels = ["label1", "label2", "label3"]
+    //List nodeLabels = ["label1", "label2", "label3", "test1"]
     List nodeLabels = ["master", "master", "master"]
 
     return nodeLabels
