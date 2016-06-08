@@ -18,7 +18,7 @@ def clearCaseMakeView(def primaryGroup, def streamName){
  * @param PRIMARY_GROUP
  * @return
  */
-def clearCaseRemoveView(primaryGroup){
+def clearCaseRemoveView(def primaryGroup){
     def vobName = "${primaryGroup}[3:]"
     def command = "cleartool rmview -tag devops_${vobName}"
     sh "${command}"
