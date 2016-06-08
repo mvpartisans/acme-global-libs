@@ -19,3 +19,5 @@ def cleanupClearCaseCheckout(PRIMARY_GROUP){
     def vobName = "{${PRIMARY_GROUP}[3:]}"
     sh 'cleartool rmview -tag devops_{vobName}'
 }
+
+return this;
