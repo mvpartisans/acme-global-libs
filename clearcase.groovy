@@ -21,7 +21,8 @@ def clearCaseMakeView(def primaryGroup, def streamName){
 def clearCaseRemoveView(def primaryGroup){
     def vobName = "${primaryGroup}[3:]"
     def command = "cleartool rmview -tag devops_${vobName}"
-    sh "${command}"
+    //sh "${command}"
+    println "cleanup"
 }
 
 return this;
