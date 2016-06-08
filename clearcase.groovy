@@ -3,12 +3,12 @@
  * @param PRIMARY_GROUP
  * @return
  */
-def checkoutFromClearCase(PRIMARY_GROUP){
-    env.CLEARCASE_PRIMARY_GROUP={PRIMARY_GROUP}
-    vobName = "{${PRIMARY_GROUP}[3:]}"
+def checkoutFromClearCase(def primaryGroup, def streamName){
+    env.CLEARCASE_PRIMARY_GROUP = primaryGroup
+    vobName = "${primaryGroup}[3:]"
     println "vobname: ${vobName}"
-    //sh 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  {streamname}@/vobs/{vobName} -stgloc -auto'
-    println "cleartool mkview -tag devops_${vobName} -tmode unix -stream  {streamname}@/vobs/${vobName} -stgloc -auto"
+    //sh 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  ${streamname}@/vobs/${vobName} -stgloc -auto'
+    println "cleartool mkview -tag devops_${vobName} -tmode unix -stream  ${streamname}@/vobs/${vobName} -stgloc -auto"
     //sh 'cleartool setview devops_{vobName}'
 }
 
