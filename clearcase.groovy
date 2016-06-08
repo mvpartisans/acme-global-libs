@@ -9,8 +9,9 @@ def clearCaseMakeView(def primaryGroup, def streamName){
     println "vobname: ${vobName}"
     //sh 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  ${streamname}@/vobs/${vobName} -stgloc -auto'
     def command =  "cleartool mkview -tag devops_${vobName} -tmode unix -stream  ${streamName}@/vobs/${vobName} -stgloc -auto"
+    println command
     sh '''
-        command
+        ${command}
     '''
 }
 
