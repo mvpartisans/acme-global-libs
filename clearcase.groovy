@@ -20,7 +20,7 @@ def clearCaseMakeView(def primaryGroup, def streamName){
  */
 def clearCaseRemoveView(primaryGroup){
     def vobName = "${primaryGroup}[3:]"
-    def command = "cleartool rmview -tag devops_${vobName}""
+    def command = "cleartool rmview -tag devops_${vobName}"
     sh "${command}"
 }
 
