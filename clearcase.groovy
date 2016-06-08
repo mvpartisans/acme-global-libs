@@ -6,8 +6,10 @@
 def checkoutFromClearCase(PRIMARY_GROUP){
     env.CLEARCASE_PRIMARY_GROUP={PRIMARY_GROUP}
     vobName = "{${PRIMARY_GROUP}[3:]}"
-    sh 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  {streamname}@/vobs/{vobName} -stgloc -auto'
-    sh 'cleartool setview devops_{vobName}'
+    println "vobname: ${vobName}"
+    //sh 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  {streamname}@/vobs/{vobName} -stgloc -auto'
+    println 'cleartool mkview -tag devops_{vobName} -tmode unix -stream  {streamname}@/vobs/{vobName} -stgloc -auto'
+    //sh 'cleartool setview devops_{vobName}'
 }
 
 /**
