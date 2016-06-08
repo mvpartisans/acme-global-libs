@@ -3,7 +3,7 @@
  * @param PRIMARY_GROUP
  * @return
  */
-def checkoutFromClearCase(def primaryGroup, def streamName){
+def clearCaseMakeView(def primaryGroup, def streamName){
     env.CLEARCASE_PRIMARY_GROUP = primaryGroup
     vobName = "${primaryGroup}[3:]"
     println "vobname: ${vobName}"
