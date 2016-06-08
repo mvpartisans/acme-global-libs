@@ -1,5 +1,5 @@
 /**
- * Checkout from ClearCase
+ * Make ClearCase View 
  * @param PRIMARY_GROUP
  * @return
  */
