@@ -1,5 +1,10 @@
 node{
 
-println StreamName
+println streamName
+
+
+if (getBinding().hasVariable("streamName")) {
+        println getProperty("streamName")
+    }
 
 }
