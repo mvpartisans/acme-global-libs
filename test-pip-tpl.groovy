@@ -1,6 +1,6 @@
 node{
 
-//println streamName
+println streamName
 
 
 if (getBinding().hasVariable("streamName")) {
