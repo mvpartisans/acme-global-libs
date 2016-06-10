@@ -1,5 +1,5 @@
 node{
 
-//println streamName
+println streamName
 println 'Hello'
 }
